@@ -1,0 +1,65 @@
+---
+title: "Run_analysis"
+author: "JC Meriaux"
+date: "May 24, 2015"
+output: html_document
+---
+
+#Run_analysis.R Tidy data processing script documentation
+
+This cookbook is for the run_analysis script transforming a Smart Phone Human Activity Dataset and cleans it before data analysis. 
+
+The following is described in this cookbox:
+* Input data
+* Data output.
+* Transformations this script does,
+
+## Input data
+
+This data israw data from sensors in a smart phone attached to a peron's belt while they performed six activities
+
+Activity are identified by the following labels:
+* WALKING
+* WALKING_UPSTAIRS
+* WALKING_DOWNSTAIRS
+* SITTING
+* STANDING
+* LAYING
+
+The data consists of 10299 observations of 561 variables for 30 subjects performing the activites, divided in training and test data sets.
+
+The raw data is split into a training set and a test set of 70 to 30 persent. 
+
+A full description of the input data set is here:
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
+
+
+##Outputted data
+
+The outputted data consists of a single table that contains the average of the mean and std for selected features listed by subject and activity label. 
+
+To identify  the features we select (mean and std features), we look at the Feature names and retain the feature if it contains "Mean", "mean" or "std".
+
+The final data set consists of a data set of 180 rows with  86 variables for each subject and activity label.
+
+The structure of the Mean_set data frame is the following:
+* subject_id: ID of the subject
+* activity_label: label of the activity
+* tBodyAcc-mean()-X
+* tBodyAcc-mean()-Y
+* tBodyAcc-mean()-Z
+* ... Other mean and std measures
+
+
+## Steps and Transformations
+
+* 1) Load Subject and X, Y data from train and test data sets
+* 2) Merge training and test data sets
+* 3) Load Activity labels and Features in corresponding tables
+* 4) Extract Mean and std feature names to retain (column name and index) having either "mean", "Mean", "std" in column name.
+* 5) Extract Mean and std features from X_ data set and add ID for merge (to keep order when doing merge)
+* 6) Add ID to Y data set before merge with Activity_labels to respect the order
+* 7) Add subject ID as first column to total data set
+* 8) Compute Mean of each colum by subject and activity and store in "Mean_set" data frame
+* 9) Write data frame in Mean_set.txt file (in active directory)
+
