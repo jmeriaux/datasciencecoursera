@@ -1,5 +1,5 @@
 ---
-title: "Run_analysis"
+title: "CodeBook for run_analysis.R"
 author: "JC Meriaux"
 date: "May 24, 2015"
 output: html_document
@@ -38,7 +38,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 
 The outputted data consists of a single table that contains the average of the mean and std for selected features listed by subject and activity label. 
 
-To identify  the features we select (mean and std features), we look at the Feature names and retain the feature if it contains "Mean", "mean" or "std".
+To identify  the features we retain (mean and std features), we look at the Feature names and retain the feature if it contains "Mean", "mean" or "std".
 
 The final data set consists of a data set of 180 rows with  86 variables for each subject and activity label.
 
@@ -52,6 +52,8 @@ The structure of the Mean_set data frame is the following:
 
 
 ## Steps and Transformations
+
+The script does the following data transformation. Please look at the run_analysis.R script where the steps are annotated as well.
 
 * 1) Load Subject and X, Y data from train and test data sets
 * 2) Merge training and test data sets
